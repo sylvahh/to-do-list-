@@ -1,0 +1,39 @@
+*{
+    
+    padding: px0;
+    margin: px0;
+}
+body{
+	width:100%;
+	display:-webkit-box;
+    -webkit-box-pack:center;
+    
+    
+}
+
+#big_wrapper{
+    text-align: center;
+    max-width:1000px;
+	margin:20px 0px;
+	display:-webkit-box;
+    background: rgb(201, 207, 214);
+	-webkit-box-orient: vertical;
+	-webkit-box-flex:1;
+    border-radius: 20px;
+
+}
+#big_wrapper{
+      width:1000px;
+    
+}
+#position{
+    padding: 20px;
+
+}
+ul {
+    cursor: pointer;
+}
+
+.done {
+    text-decoration: line-through;
+}
