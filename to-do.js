@@ -13,6 +13,13 @@ function newToDoItem() {
   input.value = "";
 }
 
+// load to do item
+function loadToDoItem(task) {
+  var li = document.createElement("li");
+  li.appendChild(document.createTextNode(task));
+  ul.appendChild(li);
+  input.value = "";
+}
 
 function inputLength() {
   return input.value.length;
@@ -23,7 +30,7 @@ function addToDoItem() {
     newToDoItem();
   }
 }
-// key press event 
+// key press event
 function keyPressEvent(event) {
   if (inputLength() > 0 && event.keyCode === 13) {
     newToDoItem();
@@ -50,6 +57,7 @@ function emptyButton() {
   listItem.forEach((element) => {
     element.parentNode.removeChild(element);
   });
+  localStorage.clear();
 }
 
 // save todolist
@@ -59,7 +67,7 @@ function saveTodoList() {
     var todo = ul.children.item(i);
 
     var todoInfo = {
-      task: todo.innerText,
+      task: todo.innerHTML,
       done: todo.classList.contains("done"),
     };
     todoItem.push(todoInfo);
@@ -69,18 +77,17 @@ function saveTodoList() {
 }
 
 // load todolist
-function loadTodoList() {
+function loadList() {
   if (localStorage.getItem("todoItem") != null) {
     var todoItem = JSON.parse(localStorage.getItem("todoItem"));
 
-    for (var i = 0; i < todoItem.length; i++);
-    {
-      var todo = todoItem[i];
-    //   newToDoItem(todo.task, todo.done);
-    }
+    todoItem.forEach((element, i) => {
+      loadToDoItem(todoItem[i].task);
+    });
   }
 }
-loadTodoList();
+
+loadList();
 
 // eventlisteners
 addButton.addEventListener("click", addToDoItem);
